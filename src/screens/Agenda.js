@@ -6,6 +6,7 @@ import moment from 'moment';
 import 'moment/locale/pt-br';
 import todayImage from '../../assets/imgs/today.jpg';
 import commonStyles from '../commonStyles';
+import Task from '../components/Task';
 
 
 export default class Agenda extends Component {
@@ -24,15 +25,11 @@ export default class Agenda extends Component {
                     </View>
                 </ImageBackground>
                 <View style={styles.taksContainer}>
-                    <Text>
-                        Tarefa 1
-            </Text>
-                    <Text>
-                        Tarefa 2
-            </Text>
-                    <Text>
-                        Tarefa 3
-            </Text>
+                    <Task desc='Tarefa pendente'
+                        estimateAt={new Date()} doneAt={null}></Task>
+                    <Task desc='Tarefa finalizada'
+                        estimateAt={new Date()} doneAt=
+                        {new Date()}></Task>
                 </View>
             </View>
         )
@@ -64,8 +61,8 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         marginBottom: 30,
     },
-    taksContainer:{
-        flex:7,
+    taksContainer: {
+        flex: 7,
     }
 
 })
