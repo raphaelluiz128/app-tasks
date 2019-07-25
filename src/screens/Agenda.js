@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet, Text, View, ImageBackground
+    StyleSheet, Text, View, ImageBackground,
+    FlatList
 } from 'react-native';
 import moment from 'moment';
 import 'moment/locale/pt-br';
@@ -10,6 +11,48 @@ import Task from '../components/Task';
 
 
 export default class Agenda extends Component {
+    
+    state = {
+        tasks:[
+{id: Math.random(),desc: 'comprar calça',
+estimateAt: new Date(),doneAt: new Date()},
+{id: Math.random(),desc: 'comprar blusa',
+estimateAt: new Date(),doneAt: null},
+{id: Math.random(),desc: 'comprar calça',
+estimateAt: new Date(),doneAt: new Date()},
+{id: Math.random(),desc: 'comprar blusa',
+estimateAt: new Date(),doneAt: null},
+{id: Math.random(),desc: 'comprar calça',
+estimateAt: new Date(),doneAt: new Date()},
+{id: Math.random(),desc: 'comprar blusa',
+estimateAt: new Date(),doneAt: null},
+{id: Math.random(),desc: 'comprar calça',
+estimateAt: new Date(),doneAt: new Date()},
+{id: Math.random(),desc: 'comprar blusa',
+estimateAt: new Date(),doneAt: null},
+{id: Math.random(),desc: 'comprar calça',
+estimateAt: new Date(),doneAt: new Date()},
+{id: Math.random(),desc: 'comprar blusa',
+estimateAt: new Date(),doneAt: null},
+{id: Math.random(),desc: 'comprar calça',
+estimateAt: new Date(),doneAt: new Date()},
+{id: Math.random(),desc: 'comprar blusa',
+estimateAt: new Date(),doneAt: null},
+{id: Math.random(),desc: 'comprar calça',
+estimateAt: new Date(),doneAt: new Date()},
+{id: Math.random(),desc: 'comprar blusa',
+estimateAt: new Date(),doneAt: null},
+{id: Math.random(),desc: 'comprar calça',
+estimateAt: new Date(),doneAt: new Date()},
+{id: Math.random(),desc: 'comprar blusa',
+estimateAt: new Date(),doneAt: null},
+{id: Math.random(),desc: 'comprar calça',
+estimateAt: new Date(),doneAt: new Date()},
+{id: Math.random(),desc: 'comprar blusa',
+estimateAt: new Date(),doneAt: null},
+        ]
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -25,11 +68,10 @@ export default class Agenda extends Component {
                     </View>
                 </ImageBackground>
                 <View style={styles.taksContainer}>
-                    <Task desc='Tarefa pendente'
-                        estimateAt={new Date()} doneAt={null}></Task>
-                    <Task desc='Tarefa finalizada'
-                        estimateAt={new Date()} doneAt=
-                        {new Date()}></Task>
+                    <FlatList data = {this.state.tasks}
+                    keyExtractor = {item => `${item.id}`}
+                    renderItem = {({item}) => <Task {...item}></Task>}>
+                    </FlatList>
                 </View>
             </View>
         )
